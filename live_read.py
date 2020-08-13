@@ -22,7 +22,7 @@ api = tweepy.API(auth)
 print('Authenticated as %s' % api.me().screen_name)
 
 # create output file and add header
-with open(filename, 'w') as csvfile:
+with open(filename, 'w', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     header = ['id_str','in_reply_to_status_id_str','in_reply_to_user_id_str','created_at','in_reply_to_screen_name','source','user_name','user_screen_name','user_created_at','user_statuses_count','user_description','user_location','user_verified','user_followers_count','user_friends_count','user_url','text','entities_hashtags','entities_urls','entities_user_mentions']
     writer.writerow(header)
@@ -41,8 +41,7 @@ def enc8(v):
 																		    
 # function for adding data to csv file
 def write_csv(row_data, filename):
-    #row_data = [enc8(d) for d in row_data]
-    with open(filename, 'a') as csvfile:
+    with open(filename, 'a', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(row_data)
 
